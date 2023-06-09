@@ -1,0 +1,21 @@
+{
+  "name": "al-command-line-inventory-application-project",
+  "version": "1.0.0",
+  "description": "\"Mod 2 First Project\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "start": "node index.js",
+    "index": "node index.js index",
+    "create": "node index.js create",
+    "show": "node index.js show",
+    "edit": "node index.js edit",
+    "destroy": "node index.js destroy"
+  },
+  "author": "Anicka Lewis",
+  "license": "ISC",
+  "devDependencies": {
+    "chalk": "^4.1.2",
+    "nanoid": "^3.3.6"
+  }
+}
