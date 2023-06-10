@@ -80,7 +80,7 @@ function editEquipmentController(equipmentList, id, updatedName) {
   );
 
   if (!equipmentToEdit) {
-    inform(chalk.red("Equipment not found. No action taken"));
+    inform("Equipment not found. No action taken");
     return;
   }
   equipmentToEdit.name = updatedName;
@@ -97,12 +97,12 @@ function editEquipmentController(equipmentList, id, updatedName) {
 //     donation}));
 //     }
 
-function destroyEquipment(equipment, id){
+function destroyEquipmentController(equipment, id){
    
         const toDestroy = equipment.findIndex((product) => product.id === id);
         if (toDestroy > -1) {
           equipment.splice(toDestroy, 1);
-          inform(chalk.blue("Equipment successfully removed from inventory"));
+          inform("Equipment successfully removed from inventory");
           //return styles;
         } else {
           inform("Equipment not found. No action taken");
@@ -116,5 +116,5 @@ module.exports = {
   createEquipment,
   createEquipmentController,
   editEquipmentController,
-  destroyEquipment
+  destroyEquipmentController
 };

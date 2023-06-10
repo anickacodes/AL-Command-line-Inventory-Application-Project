@@ -1,1 +1,42 @@
-[{"id":"h_PxY2z","name":"Dyson SuperSonic Hair Dryer","priceInCents":42900,"inStock":false,"quantity":12,"purchaseDate":"June 8, 2023"},{"id":"ha2zW3g","name":"Venturi Salon Styling Chair in Cashmere - Round","priceInCents":34900,"inStock":true,"quantity":8,"purchaseDate":"June 8, 2023"},{"id":"uFFho09","name":"Avant LE Shampoo System Black Stainless Steel and Black Bowl (Ottoman Included)","priceInCents":89900,"inStock":true,"quantity":3,"purchaseDate":"June 8, 2023"},{"id":"62N2W3g","name":"Barbicide Concentrate","priceInCents":2900,"inStock":false,"quantity":12,"purchaseDate":"June 8, 2023"},{"id":"JO2gt6F","name":"Charleston Styling Station","priceInCents":99500,"inStock":true,"quantity":8,"purchaseDate":"June 8, 2023"},{"id":"Q2a0edNMxovpKyL6xPtMH","name":"Diane Black Tail Comb","priceInCents":134622,"inStock":true,"quantity":12,"purchaseDate":"June 9, 2023"}]
+[
+    {
+        "id": "h_PxY2z",
+        "name": "Dyson SuperSonic Hair Dryer",
+        "priceInCents": 42900,
+        "inStock": false,
+        "quantity": 12,
+        "purchaseDate": "June 8, 2023"
+    },
+    {
+        "id": "uFFho09",
+        "name": "Avant LE Shampoo System Black Stainless Steel and Black Bowl (Ottoman Included)",
+        "priceInCents": 89900,
+        "inStock": true,
+        "quantity": 3,
+        "purchaseDate": "June 8, 2023"
+    },
+    {
+        "id": "62N2W3g",
+        "name": "Barbicide Concentrate",
+        "priceInCents": 2900,
+        "inStock": false,
+        "quantity": 12,
+        "purchaseDate": "June 8, 2023"
+    },
+    {
+        "id": "JO2gt6F",
+        "name": "Charleston Styling Station",
+        "priceInCents": 99500,
+        "inStock": true,
+        "quantity": 8,
+        "purchaseDate": "June 8, 2023"
+    },
+    {
+        "id": "Q2a0edNMxovpKyL6xPtMH",
+        "name": "Diane Black Tail Comb",
+        "priceInCents": 134622,
+        "inStock": true,
+        "quantity": 12,
+        "purchaseDate": "June 9, 2023"
+    }
+]

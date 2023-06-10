@@ -3,7 +3,7 @@ const {
   index,
   createEquipmentController,
   editEquipmentController,
-  destroyEquipment,
+  destroyEquipmentController,
 } = require("./src/equipInvenController");
 const { readJSONFile, writeJSONFile } = require("./src/helper");
 const { nanoid } = require("nanoid");
@@ -14,7 +14,8 @@ function run() {
   // inform(4);
 
   const equipment = readJSONFile("data", "equipmentInventory.json");
-  console.log("the style from indexJS", equipment);
+  //console.log("the style from indexJS", equipment);
+  let id = null;
   /**
      * const name = process.argv[3]; // This is used as an argument and represents the name of the purchase
         const amount = process.argv[4]; // This is used as an argument and represents the amount of the purchase
@@ -42,7 +43,7 @@ function run() {
       break;
 
     case "create":
-      const id = nanoid(7);
+       id = nanoid();
       const name = args[1];
       const priceInCents = Number(args[2]);
       const inStock = args[3] === "true";
@@ -75,7 +76,8 @@ function run() {
         break;
       }
     case "destroy":
-      updatedEquipment = destroyEquipment(equipment, id);
+        destroyEquipmentId = process.argv[3]
+      destroyEquipmentController(equipment, destroyEquipmentId);
       writeToFile = true;
       break;
 
