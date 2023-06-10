@@ -1,63 +1,95 @@
+const chalk = require("chalk");
+const {
+  index,
+  createEquipmentController,
+  editEquipmentController,
+  destroyEquipment,
+} = require("./src/equipInvenController");
+const { readJSONFile, writeJSONFile } = require("./src/helper");
+const { nanoid } = require("nanoid");
+//const { index, showController, createStyleController, destroy, editStyleController} = require("./src/equipInvenController");
+const inform = console.log;
 
-//const chalk = require('chalk');
-// const { createStyle} = require("./src/stylesHelperController")
-// const { readJSONFile, writeJSONFile } = require("./src/helpers")
-// const { index, showController, createStyleController, destroy, editStyleController} = require("./src/stylesController");
-// const inform = console.log;
+function run() {
+  // inform(4);
 
+  const equipment = readJSONFile("data", "equipmentInventory.json");
+  console.log("the style from indexJS", equipment);
+  /**
+     * const name = process.argv[3]; // This is used as an argument and represents the name of the purchase
+        const amount = process.argv[4]; // This is used as an argument and represents the amount of the purchase
+     */
+  const args = process.argv.slice(2); //action user typed in
+  const command = args[0]; //equipment
+  //const amount = process.argv[4]
+  let writeToFile = false;
 
-// function run() {
-//     inform(4);
+  switch (command) {
+    case "index":
+      const EquipmentView = index(equipment);
+      inform(EquipmentView);
+      break;
+    case "show":
+      showController(equipment);
+      //inform(viewShow);
+      break;
 
-//     let styles = readJSONFile("data", "styles.json");
-//     console.log("the style from indexJS", styles)
-//     /**
-//      * const name = process.argv[3]; // This is used as an argument and represents the name of the purchase
-//         const amount = process.argv[4]; // This is used as an argument and represents the amount of the purchase
-//      */ 
-//     const action = process.argv[2]; //action user typed in
-//     const styleId = process.argv[3]; //style
-//     const amount = process.argv[4]
-//     let writeToFile = false;
+    case "edit":
+      const editEquipmentId = process.argv[3];
+      const updatedName = process.argv[4];
+      editEquipmentController(equipment, editEquipmentId, updatedName);
+      writeToFile = true;
+      break;
 
-//     switch (action) {
-//         case "index":
-//             const styleView = index(styles)
-//             inform(styleView);
-//             break;
-//         case "show":
-//             showController(styles)
-//             //inform(viewShow);
-//             break;
+    case "create":
+      const id = nanoid(7);
+      const name = args[1];
+      const priceInCents = Number(args[2]);
+      const inStock = args[3] === "true";
+      const quantity = Number(args[4]);
+      const receipt = [];
 
-//         case "edit":
-//             const styleId = process.argv[3];
-//             const updatedName = process.argv[4];
-//             editStyleController(styles, styleId, updatedName);
-//              writeToFile = true;
-//              break;
+      try {
+        createEquipmentController(
+          name,
+          priceInCents,
+          inStock,
+          quantity,
+          equipment
+        );
+        inform("Purchase Created Successfully.");
+      } catch (error) {
+        const errorObject = {
+          id,
+          name,
+          priceInCents,
+          inStock,
+          quantity,
+          error: error.message,
+        };
+        receipt.push(errorObject);
 
-//         case "create":
-//             createStyleController(styleId, amount, styles)
-//             //updatedStyle = create(styles, styleId);
-//             writeToFile = true;
-//             break;
-//         case "destroy":
-//             updatednewStyle = destroy(styles, styleId );
-//              writeToFile = true;
-//             break;
-      
+        inform(chalk.yellow("Receipt", JSON.stringify(receipt, null, 2)));
 
-//         default: 
-//         inform(chalk.blue("Hey, did you forget something? Your cart is empty 🫠"));
-        
-//     }
-//     if (writeToFile) {
-//     writeJSONFile("data", "styles.json", styles);
-//     inform("Thank you. Styles have been updated");
-//     }
-//     //put this in purchase controller for receipt
+        writeToFile = true;
+        break;
+      }
+    case "destroy":
+      updatedEquipment = destroyEquipment(equipment, id);
+      writeToFile = true;
+      break;
 
-// }
-// run()
-
+    default:
+      inform(chalk.blue("Invalid Command 🫠"));
+  }
+  if (writeToFile) {
+    writeJSONFile("data", "equipmentInventory.json", equipment);
+    inform(
+      chalk.magenta(
+        "Thank you for your purchase. Equipment inventory has been updated."
+      )
+    );
+  }
+  //put this in purchase controller for receipt
+}
+run();
