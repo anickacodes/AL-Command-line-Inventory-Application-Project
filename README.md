@@ -1,6 +1,6 @@
 # Command Line CRUD Application
 
-You will build an application that lets users create and manipulate to an extent, an inventory database. 
+You will build (or test) an application that lets users create and manipulate to an extent, an inventory database. 
 
 ## Getting Started
 
