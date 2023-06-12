@@ -48,3 +48,9 @@
 // e" 10000 true 5
 // [object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object] Purchase Created Successfully
 // Thank you for your action. Equipment inventory has been updated.
+
+//adding cart to json
+// function writeJSONFile(directory, filename, data) {
+//   const filePath = `${directory}/${filename}`;
+//   fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+// }

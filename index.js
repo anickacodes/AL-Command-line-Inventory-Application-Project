@@ -6,13 +6,18 @@ const {
   editEquipmentController,
   destroyEquipmentController,
 } = require("./src/equipInvenController");
-const { addToCartController, showCartController } = require("./src/cartController");
+const {
+  addToCartController,
+  showCartController,
+  cancelCartController,
+} = require("./src/cartController");
 const { readJSONFile, writeJSONFile } = require("./src/helper");
 const inform = console.log;
 
 function run() {
   let equipment = readJSONFile("data", "equipmentInventory.json");
-  let cartItems = [];
+  let cartItems = readJSONFile("data", "cartItems.json");
+  //let cartItems = [];
 
   const args = process.argv.slice(2);
   const command = args[0];
@@ -67,22 +72,33 @@ function run() {
     case "cart":
       const cartCommand = args[1];
 
-        switch(cartCommand) {
-          case "add": 
-          const addToCartId = args[2];
-          addToCartController(equipment, addToCartId, cartItems);
-          writeToFile = true ;
+      switch (cartCommand) {
+        case "add":
+          const addToCartIds = args.slice(2); // Get the item IDs from the command arguments
+          addToCartController(equipment, addToCartIds, cartItems);
           break;
 
-          case "show":
+        case "show":
           showCartController(cartItems);
           break;
+
+        case "cancel":
+          cancelCartController(cartItems);
+          writeToFile = true; // Set writeToFile to true to save the changes to cartItems.json
+          break;
+
         default:
           inform(chalk.blue("Invalid Cart Command 🛒"));
           break;
       }
       break;
 
+    case "lessThan10":
+      const lessThan10Items = equipment.filter((item) => item.quantity < 10);
+      const lessThan10ItemsView = index(lessThan10Items);
+      inform(chalk.inverse.cyan("Alert! Low Inventory- Restock soon!"));
+      inform(chalk.magentaBright(lessThan10ItemsView));
+      break;
 
     default:
       inform(chalk.blue("Invalid Command 🫠"));
@@ -90,6 +106,7 @@ function run() {
 
   if (writeToFile) {
     writeJSONFile("data", "equipmentInventory.json", equipment);
+    writeJSONFile("data", "cartItems.json", cartItems);
     inform(
       chalk.magenta(
         "Thank you for your action. Equipment inventory has been updated."
