@@ -1,6 +1,6 @@
 
 const chalk = require("chalk");
-const { index, createEquipmentController, editEquipmentController, destroyEquipmentController } = require("./src/equipInvenController");
+const { index, createEquipmentController, showController, editEquipmentController, destroyEquipmentController } = require("./src/equipInvenController");
 const { readJSONFile, writeJSONFile } = require("./src/helper");
 const inform = console.log;
 
@@ -38,6 +38,12 @@ function run() {
         inform(chalk.yellow("Error:", error.message));
       }
       break;
+
+      case "show":
+        const showProductId = process.argv[3];
+  
+            showController(equipment, showProductId)
+            break;
 
     case "destroy":
       const destroyEquipmentId = args[1];

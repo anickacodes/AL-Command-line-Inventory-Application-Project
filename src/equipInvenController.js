@@ -74,6 +74,15 @@ function createEquipmentController(
     inform(chalk.yellow("Error:", error.message));
   }
 }
+function showController(equipmentList, id) {
+  const equipmentToShow = equipmentList.find((equipment) => equipment.id === id);
+
+  if (equipmentToShow) {
+    inform(JSON.stringify([equipmentToShow], null, 2));
+  } else {
+    inform("Equipment not found.");
+  }
+}
 
 function editEquipmentController(equipmentList, id, updatedName) {
   const equipmentToEdit = equipmentList.find(
@@ -103,6 +112,7 @@ function destroyEquipmentController(equipmentList, id) {
 module.exports = {
   index,
   createEquipmentController,
+  showController,
   editEquipmentController,
   destroyEquipmentController,
 };

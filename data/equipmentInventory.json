@@ -16,14 +16,6 @@
         "purchaseDate": "June 8, 2023"
     },
     {
-        "id": "62N2W3g",
-        "name": "Barbicide Concentrate",
-        "priceInCents": 2900,
-        "inStock": false,
-        "quantity": 12,
-        "purchaseDate": "June 8, 2023"
-    },
-    {
         "id": "JO2gt6F",
         "name": "New Charleston Styling Station",
         "priceInCents": 99500,
@@ -61,6 +53,22 @@
         "priceInCents": 8644,
         "inStock": true,
         "quantity": 7,
+        "purchaseDate": "June 12, 2023"
+    },
+    {
+        "id": "7K6pUh-lxdfjdR_ZFrBqQ",
+        "name": "Hendrix-PIN-TAIL-COMB",
+        "priceInCents": 885028,
+        "inStock": true,
+        "quantity": null,
+        "purchaseDate": "June 12, 2023"
+    },
+    {
+        "id": "WlYomH1Uovrg_itaLGFEw",
+        "name": "Barbicide 1Gallon Concentrate",
+        "priceInCents": 10000,
+        "inStock": true,
+        "quantity": 5,
         "purchaseDate": "June 12, 2023"
     }
 ]
