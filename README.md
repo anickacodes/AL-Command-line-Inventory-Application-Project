@@ -44,3 +44,6 @@ run the following individually in the command line:
 
 
 **To be super sure, try running a `create` command that inputs `120` `"colorcharm PAINTS™ Paints Purple"` at `$8.05` into the `equipmentInventory.json`. Add the new item to the cartItems.json. Your time and dedication are greatly appreciated. Happy testing and WELCOME TO THE TEAM!!**
+
+
+Any questions, concerns, comments, opinions - all are gladly welcome in the "Issues" tab. Create a `new issue` and we will look into any implementing any necessary modifications. 
