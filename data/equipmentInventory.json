@@ -38,5 +38,29 @@
         "inStock": true,
         "quantity": 12,
         "purchaseDate": "June 9, 2023"
+    },
+    {
+        "id": "UZ9GCsgf_fsIC52jVas_P",
+        "name": "Diane-9in-CARBON-PIN-TAIL-COMB",
+        "priceInCents": 35028,
+        "inStock": true,
+        "quantity": 50,
+        "purchaseDate": "June 11, 2023"
+    },
+    {
+        "id": "PCNZzl_YsKEl_hs7JjsR8",
+        "name": "Diane-8in-COMB",
+        "priceInCents": 35028,
+        "inStock": true,
+        "quantity": 50,
+        "purchaseDate": "June 11, 2023"
+    },
+    {
+        "id": "En9HUEp43RZTc4x_YseMm",
+        "name": "Swiffer Wet Jet",
+        "priceInCents": 8644,
+        "inStock": true,
+        "quantity": 7,
+        "purchaseDate": "June 12, 2023"
     }
 ]

@@ -12,7 +12,7 @@
     "edit": "node index.js edit",
     "destroy": "node index.js destroy"
   },
-  "author": "Anicka Lewis",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "chalk": "^4.1.2",

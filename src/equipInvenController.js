@@ -1,13 +1,13 @@
 const { nanoid } = require("nanoid");
 const inform = console.log;
-const { chalk } = require("chalk");
-
+const chalk = require("chalk");
 
 function index(arrayOfEquipment) {
   return arrayOfEquipment
     .map((eachEquipment) => eachEquipment.id + " " + eachEquipment.name)
     .join("\n");
 }
+
 function generateValidPrice(priceInCents) {
   const parsedPrice = parseFloat(priceInCents);
   if (isNaN(parsedPrice) || parsedPrice < 0) {
@@ -33,27 +33,27 @@ function createEquipment(name, priceInCents, inStock, quantity) {
       year: "numeric",
     }),
   };
+
   return newItem;
 }
 
-//createEquipment()
-
 function createEquipmentController(
+  equipmentList,
   name,
   priceInCents,
   inStock,
-  quantity,
+  quantity
 ) {
-
+  try {
     if (typeof name !== "string" || name.trim() === "") {
-      throw new Error("Invalid Name ");
+      throw new Error("Invalid Name");
     }
     if (
       typeof priceInCents !== "number" ||
       isNaN(priceInCents) ||
       priceInCents < 0
     ) {
-      throw new Error("Invalid price");
+      throw new Error("Invalid Price");
     }
     if (typeof inStock !== "boolean") {
       throw new Error("Invalid inStock value");
@@ -61,6 +61,7 @@ function createEquipmentController(
     if (typeof quantity !== "number" || quantity < 0) {
       throw new Error("Invalid quantity");
     }
+
     const orderEquipment = createEquipment(
       name,
       priceInCents,
@@ -68,11 +69,11 @@ function createEquipmentController(
       quantity
     );
     equipmentList.push(orderEquipment);
-    inform("Purchase Created Successfully");
-  
+    inform(chalk.green(equipmentList, "Purchase Created Successfully"));
+  } catch (error) {
+    inform(chalk.yellow("Error:", error.message));
+  }
 }
-
-function shoppingCart() {}
 
 function editEquipmentController(equipmentList, id, updatedName) {
   const equipmentToEdit = equipmentList.find(
@@ -83,38 +84,25 @@ function editEquipmentController(equipmentList, id, updatedName) {
     inform("Equipment not found. No action taken");
     return;
   }
+
   equipmentToEdit.name = updatedName;
-  //styleToEdit.name = updatedName;
   inform(chalk.bold.green("Equipment successfully updated"));
-  return;
 }
 
-// function listEquipment(equipment) {
-//     return  equipment.map(({id, name, priceInCents, inStock, purchaseDate}) => ({
-//     id,
-//     name,
-//     amount,
-//     donation}));
-//     }
+function destroyEquipmentController(equipmentList, id) {
+  const index = equipmentList.findIndex((equipment) => equipment.id === id);
 
-function destroyEquipmentController(equipment, id){
-   
-        const toDestroy = equipment.findIndex((product) => product.id === id);
-        if (toDestroy > -1) {
-          equipment.splice(toDestroy, 1);
-          inform("Equipment successfully removed from inventory");
-          //return styles;
-        } else {
-          inform("Equipment not found. No action taken");
-          //return styles;
-        }
-      
+  if (index > -1) {
+    equipmentList.splice(index, 1);
+    inform("Equipment successfully removed from inventory");
+  } else {
+    inform("Equipment not found. No action taken");
+  }
 }
 
 module.exports = {
   index,
-  createEquipment,
   createEquipmentController,
   editEquipmentController,
-  destroyEquipmentController
+  destroyEquipmentController,
 };
